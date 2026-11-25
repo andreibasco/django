@@ -1,0 +1,24 @@
+{% extends "accounts/base.html" %}
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+  <h1>Sign Up</h1>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <label for="{{ form.email.id_for_label }}">Email</label>
+    {{ form.email }}
+    {% for error in form.email.errors %}<p class="error">{{ error }}</p>{% endfor %}
+
+    <label for="{{ form.password.id_for_label }}">Password</label>
+    {{ form.password }}
+    {% for error in form.password.errors %}<p class="error">{{ error }}</p>{% endfor %}
+
+    <button type="submit" class="btn">CREATE</button>
+  </form>
+
+  <div class="links">
+    <a href="{% url 'login' %}" class="link-red">Already had an account?</a>
+  </div>
+{% endblock %}

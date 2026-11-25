@@ -1,0 +1,9 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+  <h1>Welcome</h1>
+  <p class="center">You're logged in as {{ request.user.email }}</p>
+  <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn">LOGOUT</button>
+  </form>
+{% endblock %}

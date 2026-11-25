@@ -1,0 +1,27 @@
+{% extends "accounts/base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  <h1>Login</h1>
+
+  <form method="post">
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <p class="error">Wrong email or password.</p>
+    {% endif %}
+
+    <label for="{{ form.username.id_for_label }}">Email</label>
+    {{ form.username }}
+
+    <label for="{{ form.password.id_for_label }}">Password</label>
+    {{ form.password }}
+
+    <button type="submit" class="btn">LOGIN</button>
+  </form>
+
+  <div class="links">
+    <a href="{% url 'signup' %}" class="link-red">Create account</a>
+    <a href="{% url 'password_reset' %}" class="link-blue">Forgot password</a>
+  </div>
+{% endblock %}
